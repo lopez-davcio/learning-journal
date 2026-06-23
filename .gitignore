@@ -1,3 +1,9 @@
 instructions.md
 regular-expressions/readme.md
 regular-expressions/.ipynb_checkpoints
+*.csv
+*.zip
+.ipynb_checkpoints/
+__pycache__/
+venv/
+.vscode/
