@@ -7,3 +7,4 @@ regular-expressions/.ipynb_checkpoints
 __pycache__/
 venv/
 .vscode/
+catboost_info/
