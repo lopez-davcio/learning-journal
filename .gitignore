@@ -8,3 +8,4 @@ __pycache__/
 venv/
 .vscode/
 catboost_info/
+data/
