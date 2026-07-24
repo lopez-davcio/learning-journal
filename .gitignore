@@ -9,3 +9,4 @@ venv/
 .vscode/
 catboost_info/
 data/
+*.txt
