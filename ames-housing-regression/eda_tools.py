@@ -132,7 +132,7 @@ class FeatureAnalyser:
         Input: Name of the feature (continuous) to analyse.
         """    
         # bin continuous feature into intervals and get mean feature_y/SalePrice per interval
-        feature_interval = self.df.groupby(pd.qcut(self.df[feature_x_name],50, precision=0))[self.target_feature_name].mean()
+        feature_interval = self.df.groupby(pd.qcut(self.df[feature_x_name],50, precision=0, duplicates='drop'))[self.target_feature_name].mean()
 
         fig, ax = plt.subplots(figsize=(8, 5))
         feature_interval.plot(kind='line', marker='o',ax=ax)
