@@ -3,6 +3,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from pandas.api.types import is_numeric_dtype
+import json
+import os
 
 
 
@@ -10,20 +12,60 @@ class FeatureAnalyser:
     """
     A tool for automated Exploratory Data Analysis (EDA).
     
-    This class provides methods to automatically detect feature types 
-    and generate descriptive statistics and visualizations relative 
-    to a target response variable.
-
-    Attributes:
-        df (pd.DataFrame): The dataset containing features and target.
-        target_feature_name (str): The name of the response variable (y).
-        discrete_threshold (int): The threshold to determine if a feature should be treated as discrete or continuous.
+    This class provides methods to:
+        - automatically detect feature types.
+        - generate descriptive statistics and visualizations relative to a target response variable.
+        - keep track of feature engineering decisions.
+     
+     Attributes:
+        - df (pd.DataFrame): The dataset containing features and target.
+        - target_feature_name (str): The name of the response variable (y).
+        - discrete_threshold (int): The threshold to determine if a feature - should be treated as discrete or continuous.
+        - roadmap_path = The path to the json file keeping track of decisions.
+        - roadmap = A dictionary tracking feature engineering tasks to perform.
     """
 
-    def __init__(self, df, target_feature_name, discrete_treshold=15):
+    def __init__(self, df, target_feature_name, discrete_treshold=15, roadmap_path:str='preprocessing_roadmap.JSON'):
         self.df = df
         self.target_feature_name = target_feature_name        
         self.discrete_threshold = discrete_treshold
+        self.roadmap_path = roadmap_path
+        self.roadmap = self._load_roadmap()
+
+
+    def _load_roadmap(self):
+        """Loads the roadmap from JSON if it already exists, otherwise returns empty dict."""
+        if os.path.exists(self.roadmap_path):
+            with open(self.roadmap_path, 'r') as f:                
+                return json.load(f)
+        return {}
+
+
+    def save_decision(self, feature_x_name, impute=None, encode=None, scale=None, power_transform=None, clip=None, group_cat=None, drop=None, reason=None):
+        """Records a preprocessing decision and saves it to roadmap.JSON"""
+        self.roadmap[feature_x_name] = {
+            'impute': impute,
+            'encode': encode,
+            'scale': scale,
+            'power_transform': power_transform,
+            'clip': clip,
+            'group_cat': group_cat,
+            'drop': drop,
+            'reason': reason}        
+        with open(self.roadmap_path, 'w') as f:
+            json.dump(self.roadmap, f, indent=4)
+        print(f"Decision for {feature_x_name} saved to {self.roadmap_path}")
+
+    def show_roadmap(self):
+        """Displays the current progress as a DataFrame"""
+        if self.roadmap:
+            return pd.DataFrame.from_dict(self.roadmap, orient='index')    
+        return 'There is no information to display, roadmap is empty.'
+
+
+#####################################################################
+
+
     def print_basic_info(self, feature_x_name:str):
         """
         Print information common to both categorical and numerical features.
@@ -199,7 +241,7 @@ class FeatureAnalyser:
         plt.show()
 
 
-#######################################################################
+#####################################################################
     
 
     def analyse_categorical_feature(self, feature_x_name:str, n_unique:int):
