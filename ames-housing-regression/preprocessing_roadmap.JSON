@@ -1,0 +1,12 @@
+{
+    "OverallQual": {
+        "impute": null,
+        "encode": null,
+        "scale": true,
+        "power_transform": null,
+        "clip": null,
+        "group_cat": null,
+        "drop": null,
+        "reason": "Ordinal numeric discrete. Good shape, range 0 to 10."
+    }
+}
