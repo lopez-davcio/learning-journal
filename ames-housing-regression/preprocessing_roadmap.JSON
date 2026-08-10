@@ -1,12 +1,52 @@
 {
     "OverallQual": {
-        "impute": null,
-        "encode": null,
+        "impute": false,
+        "encode": false,
         "scale": true,
-        "power_transform": null,
-        "clip": null,
-        "group_cat": null,
-        "drop": null,
-        "reason": "Ordinal numeric discrete. Good shape, range 0 to 10."
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Ordinal. Good shape, range 0 to 10."
+    },
+    "GrLivArea": {
+        "impute": false,
+        "encode": false,
+        "scale": true,
+        "power_transform": true,
+        "clip": 3600,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Numerical continuous. Right-skewed distribution with a few outliers on the higher x-axis end. Clipping at 3600 removes outliers that only add noise."
+    },
+    "GarageCars": {
+        "impute": false,
+        "encode": false,
+        "scale": true,
+        "power_transform": false,
+        "clip": 3,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Ordinal. Linear relationship from x=0 to x=3, price drop at x=4 (only 5 values in total). Clipping at 3 preserves linear trend."
+    },
+    "Id": {
+        "impute": false,
+        "encode": false,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": true,
+        "reason": "Unique identifier with no predictive power."
+    },
+    "TotalBsmtSF": {
+        "impute": false,
+        "encode": false,
+        "scale": true,
+        "power_transform": true,
+        "clip": 3400,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Continuous. Right-skewed, clip due to extreme anomaly at +6000. Add flag to help the model learn the difference between houses with/without basement."
     }
 }
