@@ -44,9 +44,39 @@
         "encode": false,
         "scale": true,
         "power_transform": true,
-        "clip": 3400,
+        "clip": false,
         "group_cat": false,
         "drop": false,
-        "reason": "Continuous. Right-skewed, clip due to extreme anomaly at +6000. Add flag to help the model learn the difference between houses with/without basement."
+        "reason": "Continuous. Right-skewed. Extreme anomaly at +6000, remove observation. Add flag to help the model learn the difference between houses with/without basement."
+    },
+    "BsmtFinSF1": {
+        "impute": false,
+        "encode": false,
+        "scale": true,
+        "power_transform": true,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Continuous. Right-skewed. Extreme anomaly at +5000, remove observation. Add flag to help the model learn the difference between houses with/without basement."
+    },
+    "BsmtQual": {
+        "impute": true,
+        "encode": true,
+        "scale": true,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Categorical (no basement, poor, fair, typical, good, excellent). Impute constant 'no basement'. I am undecisive between OHE and median target enconding. There are no 'poor' category observations. Relationship between categories and `SalePrice` might be exponential rather than linear. Decision: OHE it by default but use cross validation to compare results with target encoding."
+    },
+    "ExterQual": {
+        "impute": false,
+        "encode": true,
+        "scale": true,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Categorical (poor, fair, typical, good, excellent). I am undecisive between OHE and median target enconding. Decision: OHE it by default but use cross validation to compare results with median target encoding."
     }
 }
