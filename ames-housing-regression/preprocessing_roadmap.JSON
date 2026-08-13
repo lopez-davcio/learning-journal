@@ -118,5 +118,35 @@
         "group_cat": true,
         "drop": false,
         "reason": "25 neighborhoods, one of them with 2 observations. Group Blueste (2) with NPkVill (9) in a rare group and OneHotEncode."
+    },
+    "FullBath": {
+        "impute": false,
+        "encode": false,
+        "scale": true,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Numerical discrete. Range 0 to 4. Too few observations to flag 'no_bathroom'."
+    },
+    "Fireplaces": {
+        "impute": false,
+        "encode": false,
+        "scale": true,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Numerical discrete. Range 0 to 3. The jump 0 to 1 seems substantially larger than the jump 1 to 2, add flag 'no_fireplace'."
+    },
+    "FireplaceQu": {
+        "impute": true,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Categorical with an intrinsic order, poor to excellent (6 categories including missing). Impute null values with None, then OHE it."
     }
 }
