@@ -148,5 +148,35 @@
         "group_cat": false,
         "drop": false,
         "reason": "Categorical with an intrinsic order, poor to excellent (6 categories including missing). Impute null values with None, then OHE it."
+    },
+    "BsmtExposure": {
+        "impute": true,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Categorical with an intrinsic order. Impute Null values with None. Intrinsic order, no exposure, minimum, average and poor (6 categories including no basement). Impute null values with None, then OHE it. Use cross-validation to compare it against ordinal encoding (scale it first)."
+    },
+    "YearBuilt": {
+        "impute": false,
+        "encode": false,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": true,
+        "reason": "Continuous. Redundant if 'age_at_sale' is created substracting 'YearBuilt' from 'YrSold'. Keeping it would create perfect linear dependence."
+    },
+    "YrSold": {
+        "impute": false,
+        "encode": false,
+        "scale": true,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Numerical discrete. Create 'age_at_sale' subtracting 'YearBuilt'."
     }
 }
