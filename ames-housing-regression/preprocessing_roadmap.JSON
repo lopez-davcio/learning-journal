@@ -178,5 +178,55 @@
         "group_cat": false,
         "drop": false,
         "reason": "Numerical discrete. Create 'age_at_sale' subtracting 'YearBuilt'."
+    },
+    "2ndFlrSF": {
+        "impute": false,
+        "encode": false,
+        "scale": true,
+        "power_transform": true,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Continuous. Right-skewed. High frequency of observations at value 0 (no 2nd floor). Create flag. "
+    },
+    "OverallCond": {
+        "impute": false,
+        "encode": false,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": true,
+        "drop": false,
+        "reason": "Numeric ordinal. Complicated relationship with target variable, non linear. Group cat 1, 2 and 3 together and run tree-based models. For linear-based ones, OHE (reference categoring) it with 5 as reference category."
+    },
+    "GarageFinish": {
+        "impute": true,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": true,
+        "drop": false,
+        "reason": "Categorical. Impute 'missing' category.Ordinal encoding for tree-based algorithms and OHE with 'no_garage' as reference category."
+    },
+    "MSZoning": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Categorical. OHE with RL as reference category."
+    },
+    "TotRoomsAbvGrd": {
+        "impute": false,
+        "encode": false,
+        "scale": true,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Ordinal. The relationship with target variable seems linear positive."
     }
 }
