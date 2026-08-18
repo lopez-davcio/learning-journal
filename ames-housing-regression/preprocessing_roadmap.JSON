@@ -228,5 +228,45 @@
         "group_cat": false,
         "drop": false,
         "reason": "Ordinal. The relationship with target variable seems linear positive."
+    },
+    "HalfBath": {
+        "impute": false,
+        "encode": false,
+        "scale": true,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Numerical discrete. 0 to 2."
+    },
+    "SaleCondition": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": true,
+        "drop": false,
+        "reason": "Categorical. Group 'AdjLand', 'Alloca' and 'Family' together, separately, they have very few observations and are statistically unstable. OHE the resulting groups with 'Normal' as reference category."
+    },
+    "YearRemodAdd": {
+        "impute": false,
+        "encode": false,
+        "scale": true,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Continuous."
+    },
+    "GarageYrBlt": {
+        "impute": true,
+        "encode": false,
+        "scale": true,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Continuous. Impute missing values with 'YearBuilt' (that is the property's year of construction). The model already has a flag indicating no garage inside 'GarageFinish'."
     }
 }
