@@ -268,5 +268,165 @@
         "group_cat": false,
         "drop": false,
         "reason": "Continuous. Impute missing values with 'YearBuilt' (that is the property's year of construction). The model already has a flag indicating no garage inside 'GarageFinish'."
+    },
+    "GarageArea": {
+        "impute": false,
+        "encode": false,
+        "scale": true,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Continuous."
+    },
+    "GarageType": {
+        "impute": true,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": true,
+        "drop": false,
+        "reason": "Categorical. Impute null values with constant 'no_garage'. Group categories '2Types', 'Carport' and 'Basment' into new cat 'rare_garage_type'. OHE with reference category 'no_garage'."
+    },
+    "OpenPorchSF": {
+        "impute": false,
+        "encode": false,
+        "scale": true,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Continuous."
+    },
+    "MasVnrArea": {
+        "impute": true,
+        "encode": false,
+        "scale": true,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Continuous. Impute the median."
+    },
+    "BsmtFullBath": {
+        "impute": false,
+        "encode": false,
+        "scale": true,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Numerical discrete. In a more detailed data processing, it could benefit from clipping at 2."
+    },
+    "LandContour": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Categorical, 4 categories. OHE with Lvl as reference category."
+    },
+    "Condition1": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Categorical, 9 categories. OHE with Norm as reference category."
+    },
+    "LotFrontage": {
+        "impute": true,
+        "encode": false,
+        "scale": true,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Continuous. Impute with constant 0. In a more detailed data preparation, it could benefit from clipping at 200."
+    },
+    "BsmtUnfSF": {
+        "impute": false,
+        "encode": false,
+        "scale": true,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Continuous."
+    },
+    "CentralAir": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Binary encode."
+    },
+    "MoSold": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Categorical. OHE with January as reference."
+    },
+    "GarageCond": {
+        "impute": false,
+        "encode": false,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": true,
+        "reason": "Categorical. 96% of observations in one category. Four more categories for the 4% remaining."
+    },
+    "ScreenPorch": {
+        "impute": false,
+        "encode": false,
+        "scale": true,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": true,
+        "reason": "Continuous."
+    },
+    "BsmtFinType1": {
+        "impute": true,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Categorical. Impute null values with 'no_garage'. OHE with 'no_garage' as reference category."
+    },
+    "WoodDeckSF": {
+        "impute": false,
+        "encode": false,
+        "scale": true,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Continuous. In a more detailed data preparation, it could benefit from flagging observations with a value of zero."
+    },
+    "BedroomAbvGr": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": true,
+        "drop": false,
+        "reason": "Numerical discrete. Group cat 1 with 2, and cats 5+. OHE with 3 as reference category."
     }
 }
