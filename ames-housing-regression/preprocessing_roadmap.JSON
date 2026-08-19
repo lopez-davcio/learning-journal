@@ -171,13 +171,13 @@
     },
     "YrSold": {
         "impute": false,
-        "encode": false,
-        "scale": true,
+        "encode": true,
+        "scale": false,
         "power_transform": false,
         "clip": false,
         "group_cat": false,
         "drop": false,
-        "reason": "Numerical discrete. Create 'age_at_sale' subtracting 'YearBuilt'."
+        "reason": "Numerical discrete as categorical in disguise. Only 5 observations (years). No linear relationship. It's safer to OHE and let the model assign different coefficients per year."
     },
     "2ndFlrSF": {
         "impute": false,
@@ -428,5 +428,195 @@
         "group_cat": true,
         "drop": false,
         "reason": "Numerical discrete. Group cat 1 with 2, and cats 5+. OHE with 3 as reference category."
+    },
+    "EnclosedPorch": {
+        "impute": false,
+        "encode": false,
+        "scale": true,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Continuos. 70% of observations with value 0. In a more detailed data preparation, it would benefit from a value = 0 flag."
+    },
+    "MasVnrType": {
+        "impute": true,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Categorical. Impute with constant value missing. OHE with missing as reference category."
+    },
+    "SaleType": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": true,
+        "drop": false,
+        "reason": "Categorical. Group all but 'WD' and 'New' . OHE with new created category as reference category."
+    },
+    "BldgType": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Categorical. OHE with '1Fam' as reference category."
+    },
+    "Functional": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": true,
+        "drop": false,
+        "reason": "Categorical. Binary encode, 'Typ' or not 'Typ."
+    },
+    "RoofStyle": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": true,
+        "drop": false,
+        "reason": "Categorical. Group all but 'Gable' and 'Hip. OHE with 'Gable' as reference category."
+    },
+    "Foundation": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": true,
+        "drop": false,
+        "reason": "Categorical. Group 'Wood', 'Slab' and 'Stone'. OHE with new category as reference."
+    },
+    "LotConfig": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": true,
+        "drop": false,
+        "reason": "Categorical. Group 'FR2' and 'FR3'. OHE with reference category 'Inside'."
+    },
+    "BsmtFinSF2": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Numerical. 90% of the observations have a value 0. Binary encode, 0 if value == 0, else 1."
+    },
+    "LotShape": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": true,
+        "drop": false,
+        "reason": "Categorical. Group 'IR2' and 'IR3'. OHE with 'Reg' as reference category."
+    },
+    "HeatingQC": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": true,
+        "drop": false,
+        "reason": "Categorical. Group 'Fa' and 'Po' into a 'below_average' category. Then ordinal encode."
+    },
+    "LandSlope": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Categorical. Three categories. Very few observations in one of them. Binary encode, 1 if value == 'Gtl' else 0."
+    },
+    "HouseStyle": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": true,
+        "drop": false,
+        "reason": "Categorical. Group '2.5Fin' '2.5Unf' and '1.5Unf' into a rare category. OHE with 1Story as reference."
+    },
+    "GarageQual": {
+        "impute": true,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": true,
+        "drop": false,
+        "reason": "Categorical. Impute missing values with 'no_garage'. Group 'Ex' and 'Gd' with 'TA' as above average and 'Po' with 'Fa' as 'below_average'. OHE with 'no_garage' as reference."
+    },
+    "Fence": {
+        "impute": true,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": true,
+        "drop": false,
+        "reason": "Categorical. Impute missing values with 'no_fence'. Group 'MnWw' and 'MnPrv' as 'Minimum'. OHE with 'no_fence' as reference."
+    },
+    "Exterior1st": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": true,
+        "drop": false,
+        "reason": "Categorical. Group 'AsphShn', 'ImStucc', 'CBlock', 'BrkComm', 'Stone', 'AsbShng', 'Stucco' and 'WdShing' into a 'rare' category. OHE with 'VinylSd' as reference."
+    },
+    "MSSubClass": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": true,
+        "drop": false,
+        "reason": "Numerical categorical, 15 categories. Group 40, 180, 45, 75 and 85 into a 'rare' category. OHE with 20 as reference. Warning: int dtype by default."
+    },
+    "ExterCond": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": true,
+        "drop": false,
+        "reason": "Categorical. Group 'Ex' and 'Gd' with 'TA' as 'above_average' and 'Po' with 'Fa' as 'below_average'. OHE with 'TA' as reference."
+    },
+    "PoolQC": {
+        "impute": false,
+        "encode": false,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": true,
+        "reason": "99% of values are missing"
     }
 }
