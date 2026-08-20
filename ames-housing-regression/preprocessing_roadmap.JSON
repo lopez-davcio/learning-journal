@@ -618,5 +618,185 @@
         "group_cat": false,
         "drop": true,
         "reason": "99% of values are missing"
+    },
+    "Exterior2nd": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": true,
+        "drop": false,
+        "reason": "Categorical. Group 'AsphShn', 'ImStucc', 'CBlock', 'BrkComm', 'BrkFace', 'Stone', 'AsbShng', 'Stucco' and 'other' into a 'rare' category. OHE with 'VinylSd' as reference."
+    },
+    "PoolArea": {
+        "impute": false,
+        "encode": false,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": true,
+        "reason": "99.6% of data is 0."
+    },
+    "BsmtCond": {
+        "impute": true,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": true,
+        "drop": false,
+        "reason": "Categorical, four categories, poor to good. Impute with missing. For semantic reasons, group 'Po' with 'Fa' into category 'below_typical. OHE with 'missing' as reference category."
+    },
+    "BsmtFinType2": {
+        "impute": true,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Categorical, six categories. Impute with missing. Binary encode, 1 if value == 'Unf' else 0."
+    },
+    "3SsnPorch": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Only 24 observations don't equal to 0. Binary encode 1 if value > 0 else 0."
+    },
+    "LowQualFinSF": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Only 26 observations don't equal to 0. Binary encode 1 if value > 0 else 0."
+    },
+    "RoofMatl": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Only 25 observations are not 'CompShg'. Binary encode 1 if value == 'CompShg' else 0."
+    },
+    "MiscFeature": {
+        "impute": false,
+        "encode": false,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": true,
+        "reason": "Few observations not missing, it does not add valuable information."
+    },
+    "Alley": {
+        "impute": true,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Categorical. Most missing, a few in other two categories. Impute with 'missing' and OHE with 'missing' as reference category."
+    },
+    "Condition2": {
+        "impute": false,
+        "encode": false,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": true,
+        "reason": "Categorical. 8 categories, 99.9% of observations belong to one category."
+    },
+    "PavedDrive": {
+        "impute": false,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": false,
+        "reason": "Categorical. 38 categories. OHE with 'Y' as reference category."
+    },
+    "KitchenAbvGr": {
+        "impute": false,
+        "encode": false,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": true,
+        "reason": "It does not seem to have valuable information."
+    },
+    "Electrical": {
+        "impute": true,
+        "encode": true,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": true,
+        "drop": false,
+        "reason": "Categorical. 5 categories. Most of observations are in 'SBrkr' category. Impute null values into 'missing'. Group 'missing', 'Mix', 'FuseP' and 'FuseF' into a 'rare' category. OHE with 'SBkdr' as reference category."
+    },
+    "Street": {
+        "impute": false,
+        "encode": false,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": true,
+        "reason": "99.5% of observations belong to a single category."
+    },
+    "Heating": {
+        "impute": false,
+        "encode": false,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": true,
+        "reason": "Most observations belong to a single category."
+    },
+    "BsmtHalfBath": {
+        "impute": false,
+        "encode": false,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": true,
+        "reason": "It does not seem to provide valuable information."
+    },
+    "Utilities": {
+        "impute": false,
+        "encode": false,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": true,
+        "reason": "99.9% of observations belong to one single category."
+    },
+    "MiscVal": {
+        "impute": false,
+        "encode": false,
+        "scale": false,
+        "power_transform": false,
+        "clip": false,
+        "group_cat": false,
+        "drop": true,
+        "reason": "Very few distinct observations, it doesn not seem to add valuable info."
     }
 }
