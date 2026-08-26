@@ -511,10 +511,10 @@
     },
     "BsmtFinSF2": {
         "impute": false,
-        "encode": true,
+        "encode": false,
         "scale": false,
         "power_transform": false,
-        "clip": false,
+        "clip": true,
         "group_cat": false,
         "drop": false,
         "reason": "Numerical. 90% of the observations have a value 0. Binary encode, 0 if value == 0, else 1."
@@ -532,7 +532,7 @@
     "HeatingQC": {
         "impute": false,
         "encode": true,
-        "scale": false,
+        "scale": true,
         "power_transform": false,
         "clip": false,
         "group_cat": true,
@@ -545,7 +545,7 @@
         "scale": false,
         "power_transform": false,
         "clip": false,
-        "group_cat": false,
+        "group_cat": true,
         "drop": false,
         "reason": "Categorical. Three categories. Very few observations in one of them. Binary encode, 1 if value == 'Gtl' else 0."
     },
@@ -607,7 +607,7 @@
         "clip": false,
         "group_cat": true,
         "drop": false,
-        "reason": "Categorical. Group 'Ex' and 'Gd' with 'TA' as 'above_average' and 'Po' with 'Fa' as 'below_average'. OHE with 'TA' as reference."
+        "reason": "Categorical. Group 'Ex' and 'Gd' with 'TA' as 'above_average' and 'Po' with 'Fa' as 'below_average'. Binary encode."
     },
     "PoolQC": {
         "impute": false,
@@ -655,26 +655,26 @@
         "scale": false,
         "power_transform": false,
         "clip": false,
-        "group_cat": false,
+        "group_cat": true,
         "drop": false,
         "reason": "Categorical, six categories. Impute with missing. Binary encode, 1 if value == 'Unf' else 0."
     },
     "3SsnPorch": {
         "impute": false,
-        "encode": true,
+        "encode": false,
         "scale": false,
         "power_transform": false,
-        "clip": false,
+        "clip": true,
         "group_cat": false,
         "drop": false,
         "reason": "Only 24 observations don't equal to 0. Binary encode 1 if value > 0 else 0."
     },
     "LowQualFinSF": {
         "impute": false,
-        "encode": true,
+        "encode": false,
         "scale": false,
         "power_transform": false,
-        "clip": false,
+        "clip": true,
         "group_cat": false,
         "drop": false,
         "reason": "Only 26 observations don't equal to 0. Binary encode 1 if value > 0 else 0."
@@ -685,7 +685,7 @@
         "scale": false,
         "power_transform": false,
         "clip": false,
-        "group_cat": false,
+        "group_cat": true,
         "drop": false,
         "reason": "Only 25 observations are not 'CompShg'. Binary encode 1 if value == 'CompShg' else 0."
     },
@@ -727,7 +727,7 @@
         "clip": false,
         "group_cat": false,
         "drop": false,
-        "reason": "Categorical. 38 categories. OHE with 'Y' as reference category."
+        "reason": "Categorical. OHE with 'Y' as reference category."
     },
     "KitchenAbvGr": {
         "impute": false,
