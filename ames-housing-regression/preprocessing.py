@@ -20,6 +20,20 @@ from sklearn.model_selection import train_test_split, cross_val_score, cross_val
 
 
 ###------------------------------#####
+###      PREPROCESSING TOOLS
+###------------------------------#####
+
+def print_features_to_process(roadmap, strategy):
+    """Loops through the roadmap dictionary and prints name and reason fields per feature if that strategy key's value is True. """
+    if strategy == None:
+        return
+    for feature, task in roadmap.items():
+        if task[strategy] == True:
+            print(f'{feature}\n{task["reason"]} \n')
+
+
+
+###------------------------------#####
 ###         TRANSFORMERS
 ###------------------------------#####
 

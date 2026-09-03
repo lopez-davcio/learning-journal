@@ -48,6 +48,7 @@ class ModelEvaluator():
         # load models results dictionary
         self._models_results = self._load_model_results()
 
+
         # create a dictionary of estimators per algorithm type to fit to the data 
         self.tree_models = {
             'RandomForest':RandomForestRegressor(random_state=42),
@@ -108,13 +109,19 @@ class ModelEvaluator():
 
     def cross_validate_models(self, preprocessor, version):
         """
+        Checks if the provided version has already been cross-validated.
         Fits and cross-validates multiple models using a shared preprocessing pipeline.
         Formats and saves models results to the 
         Args:
             preprocessor: A ColumnTransformer or Pipeline.
             version: String suffix to identify this specific run in the results.
         """        
-        
+
+        # checks if version already exists in _models_results dictionary 
+        if any({key.endswith(version) for key in self._models_results.keys()}):
+            print(f'Skipping: Results for version{version} already exists.')
+            return
+
         for name, model in self.all_models.items():
             reg = Pipeline(steps=[
                 ('preprocessor', preprocessor),
@@ -128,5 +135,3 @@ class ModelEvaluator():
             self._models_results[name + version] = self.format_model_result(result)
 
             self._save_models_results()
-
-        
